@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 // Import Browser Router
 import { BrowserRouter } from "react-router-dom";
+import "../src/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

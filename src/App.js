@@ -12,10 +12,41 @@ import FinancialRatios from "./Pages/Financial-ratios/FinancialRatios";
 import Corporate from "./Pages/Corporate/Corporate";
 import Chart from "./Pages/Chart/Chart";
 import Business from "./Pages/Business/Business";
+import { useTranslation, Trans } from "react-i18next";
+const lngs = {
+  en: { nativeName: "English" },
+  de: { nativeName: "Deutsch" },
+  ar: { nativeName: "Arabic" },
+};
 
 const App = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="App">
+      <div>
+        {Object.keys(lngs).map((lng) => (
+          <button
+            key={lng}
+            style={{
+              fontWeight: i18n.resolvedLanguage === lng ? "bold" : "normal",
+            }}
+            type="submit"
+            onClick={() => i18n.changeLanguage(lng)}
+          >
+            {lngs[lng].nativeName}
+          </button>
+        ))}
+      </div>
+
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t("description.part2")}
+      </a>
       <Routes>
         <Route path="/overview" element={<Overview />} />
         <Route path="/profile" element={<Profile />} />
